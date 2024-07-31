@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SelectDropdown from "./components/organisms/SelectDropdown";
 import { OptionMenuList, OptionPropsList } from "types/select";
 import { components } from "./components";
+import ModalComponent from "./components/templates/Modal";
 
 const stateOptions = [
   { value: "Strawberry", label: "Strawberry" },
@@ -20,21 +21,22 @@ function App() {
   }, [toggle]);
 
   return (
-    <div className="max-w-[800px] m-auto mt-[100px] h-[400px]">
-      <button
-        onClick={() => setToggle((e) => ({ ...e, withSearch: !e.withSearch }))}
-        className="bg-[#975FCF] mb-2 mr-2 rounded-md px-6 text-[white] py-2"
-      >
-        Toggle {toggle.withSearch ? "OFF" : "ON"} Search
-      </button>
-
-      <button
-        onClick={() => setToggle((e) => ({ ...e, isMulti: !e.isMulti }))}
-        className="bg-[#975FCF] mb-2 rounded-md px-6 text-[white] py-2"
-      >
-        Toggle {toggle.isMulti ? "OFF" : "ON"} multiple choices
-      </button>
-
+    <div className="max-w-[1280px] m-auto mt-[100px] h-[400px]">
+      <div className="flex flex-row">
+        <button
+          onClick={() => setToggle((e) => ({ ...e, withSearch: !e.withSearch }))}
+          className="bg-[#975FCF] mb-2 mr-2 rounded-md px-6 text-[white] py-2"
+        >
+          Toggle {toggle.withSearch ? "OFF" : "ON"} Search
+        </button>
+        <button
+          onClick={() => setToggle((e) => ({ ...e, isMulti: !e.isMulti }))}
+          className="bg-[#975FCF] mb-2 mr-2 rounded-md px-6 text-[white] py-2"
+        >
+          Toggle {toggle.isMulti ? "OFF" : "ON"} multiselect
+        </button>
+        <ModalComponent />
+      </div>
       <SelectDropdown
         key={`${toggle.isMulti} - ${toggle.withSearch}`}
         withSearch={toggle.withSearch}

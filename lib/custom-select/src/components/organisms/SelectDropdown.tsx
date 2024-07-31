@@ -42,13 +42,14 @@ const SelectDropdown = (props: TSelectComponent) => {
     inputValue ? <ClearIcon onClick={() => setInputValue(undefined)} /> : null;
 
   return (
-    <div className={props.className}>
+    <div className={props.className ?? "w-full"}>
       <Dropdown
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         target={
           <ReactSelect
-            className={props.className}
+            id={props.id}
+            className={props.className ?? "w-full"}
             menuIsOpen={props.withSearch ? false : isMenuTargetActive}
             isClearable={false}
             value={props.value}
@@ -66,12 +67,14 @@ const SelectDropdown = (props: TSelectComponent) => {
             components={
               props.optionList
                 ? {
-                    MultiValueRemove: MultiValueRemove,
-                    Option: props.optionList,
-                  }
+                  MultiValueRemove: MultiValueRemove,
+                  Option: props.optionList,
+                }
                 : { MultiValueRemove: MultiValueRemove }
             }
             styles={{ ...targetSearchStyle, ...props.style }}
+            menuPortalTarget={document.body}
+            menuPlacement="bottom"
             formatOptionLabel={(opt, context) => {
               return (
                 <span
@@ -95,6 +98,8 @@ const SelectDropdown = (props: TSelectComponent) => {
           tabSelectsValue={false}
           options={props.options}
           className={"w-full"}
+          menuPortalTarget={document.body}
+          menuPlacement="bottom"
           onChange={handleValueChange}
           backspaceRemovesValue={false}
           controlShouldRenderValue={false}
@@ -119,27 +124,32 @@ const SelectDropdown = (props: TSelectComponent) => {
               borderTopLeftRadius: 0,
               borderTopRightRadius: 0,
             }),
+            input: (base) => ({
+              ...base,
+              "input[type='text']:focus": { boxShadow: 'none' },
+            }),
+            menuPortal: provided => ({ ...provided, zIndex: 99999, }),
             ...props.style,
           }}
           components={
             props.optionList
               ? {
-                  Control: ControlItem,
-                  DropdownIndicator: handleDropdownIndicator,
-                  IndicatorSeparator: null,
-                  Option: props.optionList,
-                }
+                Control: ControlItem,
+                DropdownIndicator: handleDropdownIndicator,
+                IndicatorSeparator: null,
+                Option: props.optionList,
+              }
               : {
-                  Control: ControlItem,
-                  DropdownIndicator: handleDropdownIndicator,
-                  IndicatorSeparator: null,
-                }
+                Control: ControlItem,
+                DropdownIndicator: handleDropdownIndicator,
+                IndicatorSeparator: null,
+              }
           }
-          // formatOptionLabel={(opt, context) => (
-          //   <span
-          //     dangerouslySetInnerHTML={{ __html: formatLabel(opt, context) }}
-          //   />
-          // )}
+          formatOptionLabel={(opt, context) => (
+            <span
+              dangerouslySetInnerHTML={{ __html: formatLabel(opt, context) }}
+            />
+          )}
         />
       </Dropdown>
     </div>

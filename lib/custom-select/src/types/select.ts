@@ -7,30 +7,30 @@ export type TTypeOptions = {
 };
 
 export type TSelectComponent = {
-  name: string;
+  id?: string;
+  name?: string;
   isMulti: boolean;
   className?: string;
   withSearch: boolean;
   placeholder?: string;
   options: TTypeOptions[];
-  containerClassName?: string;
   onChange: <T>(e: T) => void;
   style?: StylesConfig<TTypeOptions>;
   value: TTypeOptions[] | TTypeOptions;
   optionList?: ComponentType<OptionProps<TTypeOptions>>;
   // styleSearchList?: StylesConfig<TTypeOptions, false>;
 } & (
-  | {
+    | {
       // isMulti: true;
       // value?: TTypeOptions[]
       // onChange: (e: TTypeOptions[] | undefined) => void;
     }
-  | {
+    | {
       // isMulti: false;
       // value?: TTypeOptions
       // onChange: (e: TTypeOptions | undefined) => void;
     }
-);
+  );
 
 export type OptionMenuList = ComponentType<OptionProps<TTypeOptions>>;
 export type OptionPropsList = OptionProps;

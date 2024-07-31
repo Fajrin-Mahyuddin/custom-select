@@ -22,7 +22,7 @@ body {
 }
 
 .custom-select-marked-highlight-color {
-  background-color: blue;
+  background-color: #4eb2ab;
 }
 
 @media (prefers-color-scheme: light) {
