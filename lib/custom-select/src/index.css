@@ -21,7 +21,7 @@ body {
   margin: 0;
 }
 
-mark {
+.custom-select-marked-highlight-color {
   background-color: #4eb2ab;
 }
 

@@ -3,14 +3,18 @@ import ClearIcon from "../atoms/ClearIcon";
 import Dropdown from "../templates/Dropdown";
 import ControlItem from "../molecules/ControlItem";
 import { formatLabel } from "../../utils/formatLabel";
-import NonSearchableDropdown from "./NonSearchableDropdown";
 import MultiValueRemove from "../molecules/MultiValueRemove";
 import { TSelectComponent, TTypeOptions } from "../../types/select";
-import { dropdownSearchStyle, targetSearchStyle } from "../../constants";
-import ReactSelect, { InputActionMeta, SingleValue } from "react-select";
+import { targetSearchStyle } from "../../constants";
+import ReactSelect, {
+  InputActionMeta,
+  MultiValue,
+  SingleValue,
+} from "react-select";
 
 const SelectDropdown = (props: TSelectComponent) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMenuTargetActive, setMenuTargetActive] = useState(false);
   const [inputValue, setInputValue] = useState<string>();
 
   const handleSearchInputChange = (val: string, meta: InputActionMeta) => {
@@ -21,8 +25,10 @@ const SelectDropdown = (props: TSelectComponent) => {
     }
   };
 
-  const handleValueChange = (args: SingleValue<TTypeOptions>) => {
-    if (props.isMulti) {
+  const handleValueChange = (
+    args: SingleValue<TTypeOptions> | MultiValue<TTypeOptions>,
+  ) => {
+    if (props.isMulti && args) {
       const val = Array.isArray(props.value) ? [...props.value, args] : [args];
       props.onChange(val);
     } else {
@@ -35,32 +41,49 @@ const SelectDropdown = (props: TSelectComponent) => {
   const handleDropdownIndicator = () =>
     inputValue ? <ClearIcon onClick={() => setInputValue(undefined)} /> : null;
 
-  if (!props.withSearch) {
-    return (
-      <div>
-        <NonSearchableDropdown {...props} />
-      </div>
-    );
-  }
-
   return (
-    <div>
+    <div className={props.className ?? "w-full"}>
       <Dropdown
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         target={
           <ReactSelect
-            className={props.className}
-            menuIsOpen={false}
+            id={props.id}
+            className={props.className ?? "w-full"}
+            menuIsOpen={props.withSearch ? false : isMenuTargetActive}
             isClearable={false}
             value={props.value}
-            isSearchable={false}
+            isSearchable={!props.withSearch}
+            placeholder={props.placeholder}
+            hideSelectedOptions
             isMulti={props.isMulti}
             options={props.options}
-            onMenuOpen={() => setIsOpen(true)}
+            onMenuOpen={() =>
+              props.withSearch ? setIsOpen(true) : setMenuTargetActive(true)
+            }
+            openMenuOnClick={true}
+            onMenuClose={() => setMenuTargetActive(false)}
             onChange={(val) => props.onChange(val)}
-            components={{ MultiValueRemove: MultiValueRemove }}
-            styles={{ ...targetSearchStyle, ...props.targetStyle }}
+            components={
+              props.optionList
+                ? {
+                    MultiValueRemove: MultiValueRemove,
+                    Option: props.optionList,
+                  }
+                : { MultiValueRemove: MultiValueRemove }
+            }
+            styles={{ ...targetSearchStyle, ...props.style }}
+            menuPortalTarget={document.body}
+            menuPlacement="bottom"
+            formatOptionLabel={(opt, context) => {
+              return (
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: formatLabel(opt, context),
+                  }}
+                />
+              );
+            }}
           />
         }
       >
@@ -74,17 +97,54 @@ const SelectDropdown = (props: TSelectComponent) => {
           inputValue={inputValue}
           tabSelectsValue={false}
           options={props.options}
-          className={props.className}
+          className={"w-full"}
+          menuPortalTarget={document.body}
+          menuPlacement="bottom"
           onChange={handleValueChange}
           backspaceRemovesValue={false}
           controlShouldRenderValue={false}
           onInputChange={handleSearchInputChange}
-          styles={{ ...dropdownSearchStyle, ...props.style }}
-          components={{
-            Control: ControlItem,
-            DropdownIndicator: handleDropdownIndicator,
-            IndicatorSeparator: null,
+          styles={{
+            control: (base) => {
+              return {
+                ...base,
+                border: 0,
+                borderBottom: "1.5px solid #red",
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+                boxShadow: "none",
+                "&:hover": {
+                  boxShadow: "none",
+                },
+              };
+            },
+            menu: (base) => ({
+              ...base,
+              marginTop: 0,
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
+            }),
+            input: (base) => ({
+              ...base,
+              "input[type='text']:focus": { boxShadow: "none" },
+            }),
+            menuPortal: (provided) => ({ ...provided, zIndex: 99999 }),
+            ...props.style,
           }}
+          components={
+            props.optionList
+              ? {
+                  Control: ControlItem,
+                  DropdownIndicator: handleDropdownIndicator,
+                  IndicatorSeparator: null,
+                  Option: props.optionList,
+                }
+              : {
+                  Control: ControlItem,
+                  DropdownIndicator: handleDropdownIndicator,
+                  IndicatorSeparator: null,
+                }
+          }
           formatOptionLabel={(opt, context) => (
             <span
               dangerouslySetInnerHTML={{ __html: formatLabel(opt, context) }}

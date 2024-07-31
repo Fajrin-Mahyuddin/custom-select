@@ -1,4 +1,5 @@
-import { StylesConfig } from "react-select";
+import { ComponentType } from "react";
+import { OptionProps, StylesConfig } from "react-select";
 
 export type TTypeOptions = {
   label: string;
@@ -6,15 +7,18 @@ export type TTypeOptions = {
 };
 
 export type TSelectComponent = {
-  name: string;
-  options: TTypeOptions[];
-  className?: string;
-  style?: StylesConfig<TTypeOptions, false>;
-  targetStyle?: StylesConfig<TTypeOptions>;
-  withSearch: boolean;
-  onChange: <T>(e: T) => void;
+  id?: string;
+  name?: string;
   isMulti: boolean;
+  className?: string;
+  withSearch: boolean;
+  placeholder?: string;
+  options: TTypeOptions[];
+  onChange: <T>(e: T) => void;
+  style?: StylesConfig<TTypeOptions>;
   value: TTypeOptions[] | TTypeOptions;
+  optionList?: ComponentType<OptionProps<TTypeOptions>>;
+  // styleSearchList?: StylesConfig<TTypeOptions, false>;
 } & (
   | {
       // isMulti: true;
@@ -27,3 +31,6 @@ export type TSelectComponent = {
       // onChange: (e: TTypeOptions | undefined) => void;
     }
 );
+
+export type OptionMenuList = ComponentType<OptionProps<TTypeOptions>>;
+export type OptionPropsList = OptionProps;
