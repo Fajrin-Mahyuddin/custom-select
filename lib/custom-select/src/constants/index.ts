@@ -36,13 +36,13 @@ export const targetSearchStyle: StylesConfig<TTypeOptions> = {
     ...base,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
-    zIndex: 99999
+    zIndex: 99999,
   }),
   input: (base) => ({
     ...base,
-    "input[type='text']:focus": { boxShadow: 'none' },
+    "input[type='text']:focus": { boxShadow: "none" },
   }),
-  menuPortal: provided => ({ ...provided, zIndex: 99999 }),
+  menuPortal: (provided) => ({ ...provided, zIndex: 99999 }),
   multiValueRemove(base) {
     return {
       ...base,

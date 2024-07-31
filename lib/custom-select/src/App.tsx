@@ -24,7 +24,9 @@ function App() {
     <div className="max-w-[1280px] m-auto mt-[100px] h-[400px]">
       <div className="flex flex-row">
         <button
-          onClick={() => setToggle((e) => ({ ...e, withSearch: !e.withSearch }))}
+          onClick={() =>
+            setToggle((e) => ({ ...e, withSearch: !e.withSearch }))
+          }
           className="bg-[#975FCF] mb-2 mr-2 rounded-md px-6 text-[white] py-2"
         >
           Toggle {toggle.withSearch ? "OFF" : "ON"} Search

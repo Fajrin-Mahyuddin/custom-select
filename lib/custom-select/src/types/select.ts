@@ -20,17 +20,17 @@ export type TSelectComponent = {
   optionList?: ComponentType<OptionProps<TTypeOptions>>;
   // styleSearchList?: StylesConfig<TTypeOptions, false>;
 } & (
-    | {
+  | {
       // isMulti: true;
       // value?: TTypeOptions[]
       // onChange: (e: TTypeOptions[] | undefined) => void;
     }
-    | {
+  | {
       // isMulti: false;
       // value?: TTypeOptions
       // onChange: (e: TTypeOptions | undefined) => void;
     }
-  );
+);
 
 export type OptionMenuList = ComponentType<OptionProps<TTypeOptions>>;
 export type OptionPropsList = OptionProps;

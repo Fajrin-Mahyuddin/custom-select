@@ -67,9 +67,9 @@ const SelectDropdown = (props: TSelectComponent) => {
             components={
               props.optionList
                 ? {
-                  MultiValueRemove: MultiValueRemove,
-                  Option: props.optionList,
-                }
+                    MultiValueRemove: MultiValueRemove,
+                    Option: props.optionList,
+                  }
                 : { MultiValueRemove: MultiValueRemove }
             }
             styles={{ ...targetSearchStyle, ...props.style }}
@@ -126,24 +126,24 @@ const SelectDropdown = (props: TSelectComponent) => {
             }),
             input: (base) => ({
               ...base,
-              "input[type='text']:focus": { boxShadow: 'none' },
+              "input[type='text']:focus": { boxShadow: "none" },
             }),
-            menuPortal: provided => ({ ...provided, zIndex: 99999, }),
+            menuPortal: (provided) => ({ ...provided, zIndex: 99999 }),
             ...props.style,
           }}
           components={
             props.optionList
               ? {
-                Control: ControlItem,
-                DropdownIndicator: handleDropdownIndicator,
-                IndicatorSeparator: null,
-                Option: props.optionList,
-              }
+                  Control: ControlItem,
+                  DropdownIndicator: handleDropdownIndicator,
+                  IndicatorSeparator: null,
+                  Option: props.optionList,
+                }
               : {
-                Control: ControlItem,
-                DropdownIndicator: handleDropdownIndicator,
-                IndicatorSeparator: null,
-              }
+                  Control: ControlItem,
+                  DropdownIndicator: handleDropdownIndicator,
+                  IndicatorSeparator: null,
+                }
           }
           formatOptionLabel={(opt, context) => (
             <span
