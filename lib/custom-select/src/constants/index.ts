@@ -6,7 +6,7 @@ export const dropdownSearchStyle: StylesConfig<TTypeOptions, false> = {
     return {
       ...base,
       border: 0,
-      borderBottom: "1.5px solid #e7e4e4",
+      borderBottom: "1.5px solid #red",
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
       boxShadow: "none",
@@ -15,8 +15,13 @@ export const dropdownSearchStyle: StylesConfig<TTypeOptions, false> = {
       },
     };
   },
-  menu: () => ({ borderTopLeftRadius: 0, borderTopRightRadius: 0 }),
-  multiValue: (base) => ({ ...base, borderRadius: "15px" }),
+  menu: (base) => ({
+    ...base,
+    marginTop: 0,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+  }),
+  // multiValue: (base) => ({ ...base, borderRadius: "15px" }),
 };
 
 export const targetSearchStyle: StylesConfig<TTypeOptions> = {
@@ -27,6 +32,11 @@ export const targetSearchStyle: StylesConfig<TTypeOptions> = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  }),
+  menu: (base) => ({
+    ...base,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
   }),
   multiValueRemove(base) {
     return {

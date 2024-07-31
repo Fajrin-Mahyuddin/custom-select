@@ -7,5 +7,5 @@ export const formatLabel = (
 ) => {
   const regex = RegExp(`${context.inputValue}`, "gi");
   const text = opt.label.replace(regex, `<mark>$&</mark>`);
-  return text;
+  return context.selectValue.includes(opt) ? opt.label : text;
 };

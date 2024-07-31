@@ -1,7 +1,7 @@
 {
   "name": "@fajrindev/custom-select",
   "private": false,
-  "version": "0.0.16",
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -22,8 +22,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:another": "vite build && tsc",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "npm run build",
     "format": "npx prettier . --write"

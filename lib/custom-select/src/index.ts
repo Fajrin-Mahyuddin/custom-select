@@ -1,4 +1,4 @@
 import "./index.css";
-import SelectDropdown from './components/organisms/SelectDropdown';
+import SelectDropdown from "./components/organisms/SelectDropdown";
 
-export default SelectDropdown
+export default SelectDropdown;

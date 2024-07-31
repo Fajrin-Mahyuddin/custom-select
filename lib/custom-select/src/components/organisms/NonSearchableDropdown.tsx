@@ -10,6 +10,9 @@ const NonSearchableDropdown = ({
   name,
   options,
   onChange,
+  inputStyle,
+  placeholder,
+  optionList,
 }: TSelectComponent) => {
   return (
     <ReactSelect
@@ -21,10 +24,14 @@ const NonSearchableDropdown = ({
       backspaceRemovesValue={false}
       isMulti={isMulti}
       options={options}
-      placeholder="Search"
-      styles={targetSearchStyle}
+      placeholder={placeholder}
+      styles={{ ...targetSearchStyle, ...inputStyle }}
       onChange={onChange}
-      components={{ MultiValueRemove: MultiValueRemove }}
+      components={
+        optionList
+          ? { MultiValueRemove: MultiValueRemove, Option: optionList }
+          : { MultiValueRemove: MultiValueRemove }
+      }
       formatOptionLabel={(opt, context) => (
         <span dangerouslySetInnerHTML={{ __html: formatLabel(opt, context) }} />
       )}
