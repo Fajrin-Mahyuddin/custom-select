@@ -1,3 +1,1 @@
-import { components } from "react-select";
-
-export { components };
+export { components } from "react-select";

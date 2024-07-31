@@ -8,17 +8,17 @@ export type TTypeOptions = {
 
 export type TSelectComponent = {
   name: string;
+  isMulti: boolean;
+  className?: string;
+  withSearch: boolean;
+  placeholder?: string;
   options: TTypeOptions[];
   containerClassName?: string;
-  className?: string;
-  placeholder?: string;
-  styleSearchList?: StylesConfig<TTypeOptions, false>;
-  inputStyle?: StylesConfig<TTypeOptions>;
-  optionList?: ComponentType<OptionProps<TTypeOptions>>;
-  withSearch: boolean;
   onChange: <T>(e: T) => void;
-  isMulti: boolean;
+  style?: StylesConfig<TTypeOptions>;
   value: TTypeOptions[] | TTypeOptions;
+  optionList?: ComponentType<OptionProps<TTypeOptions>>;
+  // styleSearchList?: StylesConfig<TTypeOptions, false>;
 } & (
   | {
       // isMulti: true;

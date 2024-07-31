@@ -6,6 +6,9 @@ export const formatLabel = (
   context: FormatOptionLabelMeta<TTypeOptions>,
 ) => {
   const regex = RegExp(`${context.inputValue}`, "gi");
-  const text = opt.label.replace(regex, `<mark>$&</mark>`);
+  const text = opt.label.replace(
+    regex,
+    `<mark class="custom-select-marked-highlight-color">$&</mark>`,
+  );
   return context.selectValue.includes(opt) ? opt.label : text;
 };

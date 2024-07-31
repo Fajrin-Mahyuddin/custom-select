@@ -5,7 +5,7 @@ import ControlItem from "../molecules/ControlItem";
 import { formatLabel } from "../../utils/formatLabel";
 import MultiValueRemove from "../molecules/MultiValueRemove";
 import { TSelectComponent, TTypeOptions } from "../../types/select";
-import { dropdownSearchStyle, targetSearchStyle } from "../../constants";
+import { targetSearchStyle } from "../../constants";
 import ReactSelect, {
   InputActionMeta,
   MultiValue,
@@ -71,7 +71,7 @@ const SelectDropdown = (props: TSelectComponent) => {
                   }
                 : { MultiValueRemove: MultiValueRemove }
             }
-            styles={targetSearchStyle}
+            styles={{ ...targetSearchStyle, ...props.style }}
             formatOptionLabel={(opt, context) => {
               return (
                 <span
@@ -99,7 +99,28 @@ const SelectDropdown = (props: TSelectComponent) => {
           backspaceRemovesValue={false}
           controlShouldRenderValue={false}
           onInputChange={handleSearchInputChange}
-          styles={dropdownSearchStyle}
+          styles={{
+            control: (base) => {
+              return {
+                ...base,
+                border: 0,
+                borderBottom: "1.5px solid #red",
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+                boxShadow: "none",
+                "&:hover": {
+                  boxShadow: "none",
+                },
+              };
+            },
+            menu: (base) => ({
+              ...base,
+              marginTop: 0,
+              borderTopLeftRadius: 0,
+              borderTopRightRadius: 0,
+            }),
+            ...props.style,
+          }}
           components={
             props.optionList
               ? {
@@ -114,11 +135,11 @@ const SelectDropdown = (props: TSelectComponent) => {
                   IndicatorSeparator: null,
                 }
           }
-          formatOptionLabel={(opt, context) => (
-            <span
-              dangerouslySetInnerHTML={{ __html: formatLabel(opt, context) }}
-            />
-          )}
+          // formatOptionLabel={(opt, context) => (
+          //   <span
+          //     dangerouslySetInnerHTML={{ __html: formatLabel(opt, context) }}
+          //   />
+          // )}
         />
       </Dropdown>
     </div>

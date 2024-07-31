@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SelectDropdown from "./components/organisms/SelectDropdown";
-// import { OptionMenuList, OptionPropsList } from "types/select";
-// import { components } from "./components";
+import { OptionMenuList, OptionPropsList } from "types/select";
+import { components } from "./components";
 
 const stateOptions = [
   { value: "Strawberry", label: "Strawberry" },
@@ -46,18 +46,27 @@ function App() {
           console.log("value", e);
         }}
         name="name"
-        // optionList={Menu}
+        style={{
+          option: (base) => ({
+            ...base,
+            backgroundColor: "#fff",
+            "&:hover": {
+              backgroundColor: "salmon",
+            },
+          }),
+        }}
+        optionList={Menu}
       />
     </div>
   );
 }
 
-// const Menu = ((props: OptionPropsList) => {
-//   return (
-//     <div className="bg-[red] text-[20px]">
-//       <components.Option {...props}>a{props.children}</components.Option>
-//     </div>
-//   );
-// }) as OptionMenuList;
+const Menu = ((props: OptionPropsList) => {
+  return (
+    <div className="bg-[red] text-[20px]">
+      <components.Option {...props}>{props.children}</components.Option>
+    </div>
+  );
+}) as OptionMenuList;
 
 export default App;
