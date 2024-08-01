@@ -7,11 +7,11 @@ Custom select for react components
 Import components from @fajrindev/custom-select library
 Install package using npm:
 
-```
-      npm i @fajrindev/custom-select
+```js
+npm i @fajrindev/custom-select
 ```
 
-        now import export default component:
+now import export default component:
 
 ```js
 import SelectDropdown from "@fajrindev/custom-select";
@@ -38,24 +38,23 @@ const YourComponent = () => {
 You may got warning if you are using typescript at setValue, you need to cast args "result" with your value type:
 
 ```js
-setValue(result as []) // "result" types is []
+  setValue(result as []) // "result" types is []
 ```
 
 ## Table Props
 
-| Props | Types | Default | Description |
-
-| ------------- | ------------- | -------- | ---------- |
-| id | string | undefined | Id attribute |
-| withSearch | boolean | *required | To enable search input in list of options |
-| isMulti | boolean | *required | Enable multiselect value |
-| options | array | none | Options value list |
-| value | array | *require | Defined value |
-| name | string | none | Name attribute input |
-| className | string | "" | Style css using classname |
-| placeholder | string | "" | Placeholder attribute for input |
-| onChange | function | *require | Handling function for response value |
-| style | | | Custom style for input and option |
+| Props       | Types    | Default    | Description                               |
+| ----------- | -------- | ---------- | ----------------------------------------- |
+| id          | string   | undefined  | Id attribute                              |
+| withSearch  | boolean  | \*required | To enable search input in list of options |
+| isMulti     | boolean  | \*required | Enable multiselect value                  |
+| options     | array    | none       | Options value list                        |
+| value       | array    | \*require  | Defined value                             |
+| name        | string   | none       | Name attribute input                      |
+| className   | string   | ""         | Style css using classname                 |
+| placeholder | string   | ""         | Placeholder attribute for input           |
+| onChange    | function | \*require  | Handling function for response value      |
+| style       |          |            | Custom style for input and option         |
 
 ## Styling option
 
@@ -73,18 +72,19 @@ you may want to change the way option to be renderd in components
     }) as OptionMenuList;
 ```
 
-      if you are using typescript you may want to import types:
+if you are using typescript you may want to import types:
 
-```
-    import { OptionMenuList, OptionPropsList } from '@fajrindev/custom-select'
-```
-
-      also components:
-
-```
-    import { components } from '@fajrindev/custom-select'
+```js
+import { OptionMenuList, OptionPropsList } from "@fajrindev/custom-select";
 ```
 
-See demos for example:
+also components:
 
-- [Demos](https://tes.com)
+```js
+import { components } from "@fajrindev/custom-select";
+```
+
+See demo and storybook doc url below:
+
+- [Demo](https://master--demo-custom-select-fajrin.netlify.app)
+- [Storybook](https://master--storybook-custom-select-fajrin.netlify.app)
