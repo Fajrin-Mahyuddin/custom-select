@@ -55,10 +55,11 @@ setState(result as []) // "result" types is []
 | placeholder | string   | ""         | Placeholder attribute for input           |
 | onChange    | function | \*require  | Handling function for response value      |
 | style       |          |            | Custom style for input and option         |
+| optionList  |          |            | Custom component for render option list   |
 
-## Styling option
+## Styling
 
-you may want to change the way option to be renderd in components
+You may want to change the way option to be renderd in components
 
 - Create your own components
 
@@ -72,7 +73,10 @@ you may want to change the way option to be renderd in components
     }) as OptionMenuList;
 ```
 
+then you can pass "Menu" component as a props via "optionList"
+
 - You can change mark highlight color using css by className ".custom-select-marked-highlight-color":
+
 ```js
 .custom-select-marked-highlight-color {
   background-color: #4eb2ab;
