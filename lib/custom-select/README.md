@@ -84,7 +84,7 @@ also components:
     import { components } from '@fajrindev/custom-select'
 ```
 
-See demos and storybook url for example:
+See demo and storybook doc url below:
 
-- [Demos](https://tes.com)
-- [Storybook](https://master--storybook-custom-select-fajrin.netlify.app/)
+- [Demo](https://master--demo-custom-select-fajrin.netlify.app)
+- [Storybook](https://master--storybook-custom-select-fajrin.netlify.app)
