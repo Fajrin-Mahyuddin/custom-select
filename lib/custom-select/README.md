@@ -28,17 +28,17 @@ const YourComponent = () => {
       isMulti={true}
       value={value}
       onChange={(result) => {
-        setValue(result);
+        console.log(result); //cast types result as []
       }}
     />
   );
 };
 ```
 
-You may got warning if you are using typescript at setValue, you need to cast args "result" with your value type:
+You may have warning if you are using typescript at value for setState hooks, you need to cast args "result" with your value type:
 
 ```js
-  setValue(result as []) // "result" types is []
+setState(result as []) // "result" types is []
 ```
 
 ## Table Props
