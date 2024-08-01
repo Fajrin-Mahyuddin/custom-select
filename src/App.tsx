@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import
-SelectDropdown,
-{
-  // OptionMenuList, OptionPropsList, components
+SelectDropdown, {
+  OptionMenuList, OptionPropsList, components
 } from '@fajrindev/custom-select'
 
 const stateOptions = [
@@ -12,6 +11,7 @@ const stateOptions = [
   { value: "Orange strawberry", label: "Orange strawberry" },
   { value: "Orange strawberry ice", label: "Orange strawberry ice" },
 ];
+
 function App() {
   const [value, setValue] = useState([]);
   const [toggle, setToggle] = useState({ withSearch: false, isMulti: false });
@@ -42,57 +42,59 @@ function App() {
         isMulti={toggle.isMulti}
         // className='w-[400px] bg-red-400'
         value={value}
-        // style={{
-        //   option: () => ({
-        //     backgroundColor: "salmon",
-        //     "&:hover": {
-        //       backgroundColor: "green"
-        //     }
-        //   })
-        // }}
+        style={{
+          option: () => ({
+            backgroundColor: "#fff",
+            padding: "5px 10px",
+            "&:hover": {
+              backgroundColor: "#975FCF",
+              color: "#fff"
+            }
+          })
+        }}
         onChange={(e) => {
           setValue(e as typeof value);
           console.log("value", e);
         }}
         name="name"
-      // optionList={Menu}
+        optionList={Menu}
       />
     </div>
   )
 }
 
-// const Menu = ((props: OptionPropsList) => {
-//   return (
-//     <div className="hover:bg-red-400">
-//       <components.Option {...props}>
-//         <span className='flex flex-row items-center gap-2 justify-start'>
-//           <RemoveIcon />{props.children}
-//         </span>
-//       </components.Option>
-//     </div>
-//   );
-// }) as OptionMenuList;
+const Menu = ((props: OptionPropsList) => {
+  return (
+    <div className="hover:bg-red-400">
+      <components.Option {...props}>
+        <span className='flex flex-row items-center gap-2 justify-start'>
+          <RemoveIcon />{props.children}
+        </span>
+      </components.Option>
+    </div>
+  );
+}) as OptionMenuList;
 
-// const RemoveIcon = () => {
-//   return (
-//     <svg viewBox="0 0 512 512" fill="currentColor" height="1em" width="1em">
-//       <path
-//         fill="none"
-//         stroke="currentColor"
-//         strokeMiterlimit={10}
-//         strokeWidth={32}
-//         d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"
-//       />
-//       <path
-//         fill="none"
-//         stroke="currentColor"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         strokeWidth={32}
-//         d="M320 320L192 192M192 320l128-128"
-//       />
-//     </svg>
-//   );
-// };
+const RemoveIcon = () => {
+  return (
+    <svg viewBox="0 0 512 512" fill="currentColor" height="1em" width="1em">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeMiterlimit={10}
+        strokeWidth={32}
+        d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"
+      />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={32}
+        d="M320 320L192 192M192 320l128-128"
+      />
+    </svg>
+  );
+};
 
 export default App

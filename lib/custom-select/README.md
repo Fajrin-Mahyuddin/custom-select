@@ -72,6 +72,14 @@ you may want to change the way option to be renderd in components
     }) as OptionMenuList;
 ```
 
+- You can change mark highlight color using css by className ".custom-select-marked-highlight-color":
+```js
+.custom-select-marked-highlight-color {
+  background-color: #4eb2ab;
+  // another style here
+}
+```
+
 if you are using typescript you may want to import types:
 
 ```js
