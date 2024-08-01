@@ -21,7 +21,7 @@ const ModalComponent = () => {
     <div>
       <button
         onClick={() => setOpenModal(true)}
-        className="bg-[#975FCF] mb-2 mr-2 rounded-md px-6 text-[white] py-2"
+        className="bg-[#b06ce7] mb-2 mr-2 rounded-md px-6 text-[white] py-2"
       >
         Toggle modal
       </button>
