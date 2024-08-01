@@ -13,7 +13,7 @@ export type TSelectComponent = {
   className?: string;
   withSearch: boolean;
   placeholder?: string;
-  options: TTypeOptions[];
+  options?: TTypeOptions[];
   onChange: <T>(e: T) => void;
   style?: StylesConfig<TTypeOptions>;
   value: TTypeOptions[] | TTypeOptions;

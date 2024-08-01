@@ -1,0 +1,246 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Documentation" />
+
+# Documentation
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+  Custom select for react components
+  ## How to use it
+  Import components from @fajrindev/custom-select library
+    Install package using npm:
+  ```
+        npm i @fajrindev/custom-select
+  ```
+        now import export default component:
+  ```js
+    import SelectDropdown from '@fajrindev/custom-select'
+  ```
+  render in react component:
+
+```js
+const YourComponent = () => {
+  return (
+    <SelectDropdown
+      withSearch={true}
+      options={stateOptions}
+      isMulti={true}
+      value={value}
+      onChange={(result) => {
+        setValue(result);
+      }}
+    />
+  );
+};
+```
+
+You may got warning if you are using typescript at setValue, you need to cast args "result" with your value type:
+
+```js
+setValue(result as []) // "result" types is []
+```
+
+## Table Props
+
+        <table>
+          <tr>
+            <th>
+              Props
+            </th>
+             <th>
+              Types
+            </th>
+             <th>
+              Default
+            </th>
+             <th>
+              Description
+            </th>
+          </tr>
+           <tr>
+            <td>
+              id
+            </td>
+             <td>
+              string
+            </td>
+             <td>
+              undefined
+            </td>
+             <td>
+              Id attribute
+            </td>
+          </tr>
+          <tr>
+            <td>
+              withSearch
+            </td>
+             <td>
+              boolean
+            </td>
+             <td>
+              *required
+            </td>
+             <td>
+              To enable search input in list of options
+            </td>
+          </tr>
+          <tr>
+            <td>
+              isMulti
+            </td>
+             <td>
+              boolean
+            </td>
+             <td>
+              *required
+            </td>
+             <td>
+              Enable multiselect value
+            </td>
+          </tr>
+          <tr>
+            <td>
+              options
+            </td>
+             <td>
+              array
+            </td>
+             <td>
+              none
+            </td>
+             <td>
+              Options value list
+            </td>
+          </tr>
+           <tr>
+            <td>
+              value
+            </td>
+             <td>
+              array
+            </td>
+             <td>
+              *require
+            </td>
+             <td>
+              Define value
+            </td>
+          </tr>
+           <tr>
+            <td>
+              name
+            </td>
+             <td>
+              string
+            </td>
+             <td>
+              none
+            </td>
+             <td>
+              Name attribute input
+            </td>
+          </tr>
+           <tr>
+            <td>
+              className
+            </td>
+             <td>
+              string
+            </td>
+             <td>
+              none
+            </td>
+             <td>
+              Style css using classname
+            </td>
+          </tr>
+           <tr>
+            <td>
+              placeholder
+            </td>
+             <td>
+              string
+            </td>
+             <td>
+              none
+            </td>
+             <td>
+              Placeholder attribute for input
+            </td>
+          </tr>
+           <tr>
+            <td>
+              onChange
+            </td>
+             <td>
+              function
+            </td>
+             <td>
+              *require
+            </td>
+             <td>
+              Handling function for response value
+            </td>
+          </tr>
+           <tr>
+            <td>
+              style
+            </td>
+             <td>
+
+            </td>
+             <td>
+
+            </td>
+             <td>
+              Custom style for input and option
+            </td>
+          </tr>
+        </table>
+
+      ## Styling option
+      you may want to change the way option to be renderd in components
+      - Create your own components
+
+```js
+    const Menu = ((props: OptionPropsList) => {
+      return (
+        <div className="bg-[salmon] text-[16px]">
+          <components.Option {...props}>{props.children}</components.Option>
+        </div>
+      );
+    }) as OptionMenuList;
+```
+
+      if you are using typescript you may want to import types:
+
+```
+    import { OptionMenuList, OptionPropsList } from '@fajrindev/custom-select'
+```
+
+      also components:
+
+```
+    import { components } from '@fajrindev/custom-select'
+```
+
+      See demos for example:
+      - [Demos](https://tes.com)
+
+  </div>
+</div>
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  `}
+</style>

@@ -67,7 +67,7 @@ function App() {
 
 const Menu = ((props: OptionPropsList) => {
   return (
-    <div className="bg-[red] text-[20px]">
+    <div className="bg-[salmon] text-[16px]">
       <components.Option {...props}>{props.children}</components.Option>
     </div>
   );

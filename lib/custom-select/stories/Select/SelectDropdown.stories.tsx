@@ -1,9 +1,10 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
-import SelectCustom from "./SelectDropdown";
+// import { useArgs } from "@storybook/preview-api";
+import SelectCustom from "../../src/components/organisms/SelectDropdown";
 import { fn } from "@storybook/test";
 import { useState } from "react";
-import ModalComponent from "../templates/Modal";
+import ModalComponent from "../../src/components/templates/Modal";
 
 const meta = {
   title: "Custom Select",
@@ -43,7 +44,7 @@ export const UsageWithModal: Story = {
     ...Base.args,
     name: "usage",
   },
-  render: function Rander(args) {
+  render: function Rander() {
     return <ModalComponent />;
   },
 };
