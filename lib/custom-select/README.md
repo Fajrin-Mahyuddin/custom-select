@@ -7,11 +7,11 @@ Custom select for react components
 Import components from @fajrindev/custom-select library
 Install package using npm:
 
-```
-      npm i @fajrindev/custom-select
+```js
+npm i @fajrindev/custom-select
 ```
 
-        now import export default component:
+now import export default component:
 
 ```js
 import SelectDropdown from "@fajrindev/custom-select";
@@ -38,13 +38,12 @@ const YourComponent = () => {
 You may got warning if you are using typescript at setValue, you need to cast args "result" with your value type:
 
 ```js
-setValue(result as []) // "result" types is []
+  setValue(result as []) // "result" types is []
 ```
 
 ## Table Props
 
 | Props | Types | Default | Description |
-
 | ------------- | ------------- | -------- | ---------- |
 | id | string | undefined | Id attribute |
 | withSearch | boolean | *required | To enable search input in list of options |
@@ -73,18 +72,19 @@ you may want to change the way option to be renderd in components
     }) as OptionMenuList;
 ```
 
-      if you are using typescript you may want to import types:
+if you are using typescript you may want to import types:
 
-```
+```js
     import { OptionMenuList, OptionPropsList } from '@fajrindev/custom-select'
 ```
 
-      also components:
+also components:
 
-```
+```js
     import { components } from '@fajrindev/custom-select'
 ```
 
-See demos for example:
+See demos and storybook url for example:
 
 - [Demos](https://tes.com)
+- [Storybook](https://master--storybook-custom-select-fajrin.netlify.app/)
