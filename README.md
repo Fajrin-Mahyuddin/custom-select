@@ -1,8 +1,8 @@
-#Custom Select Component
+# Custom Select Component
 
 Use npm package manager to install
 ```js
-	npm i @fajrindev/custom-select
+npm i @fajrindev/custom-select
 ```
 See completed doc and demo here : 
 
